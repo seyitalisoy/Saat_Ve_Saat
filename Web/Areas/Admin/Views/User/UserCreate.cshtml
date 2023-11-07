@@ -1,0 +1,90 @@
+﻿
+
+@model UserCreateViewModel
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+<div class="text-center my-5">
+    <div class="display-6">Kullanıcı oluşturma</div>
+</div>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-info" role="alert">
+        @TempData["Successmessage"]
+    </div>
+}
+
+<form method="post" asp-action="UserCreate">
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group my-3">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" />
+            </div>
+            <div class="form-group my-3">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" />
+            </div>
+            <div class="form-group my-3">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" />
+            </div>
+
+            <div class="form-group my-3">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+
+            <div class="form-group my-3">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+            </div>
+
+            <div class="form-group my-3">
+                <label asp-for="PasswordConfirm"></label>
+                <input asp-for="PasswordConfirm" class="form-control" />
+            </div>
+
+            <div class="form-group my-3">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control" />
+            </div>
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="form-group my-3">
+                <label asp-for="TcNo">Tc Numarası</label>
+                <input asp-for="TcNo" class="form-control" />
+            </div>
+
+            <div class="form-group my-3">
+                <label asp-for="BirthDay">Doğum Tarihi</label>
+                <input type="date" asp-for="BirthDay" id="birthDay" class="form-control" placeholder="Gün.Ay.Yıl" />
+            </div>
+
+            <div class="form-group my-3">
+                <label asp-for="DateOfHire">İşe Giriş Tarihi</label>
+                <input type="date" asp-for="DateOfHire" id="dateOfHire" class="form-control" placeholder="Gün.Ay.Yıl" />
+            </div>
+
+            <div class="form-group my-3">
+                <label asp-for="PositionId">Posisyon</label> 
+                <select class="form-control" asp-for="PositionId" asp-items="@ViewBag.Positions"></select>
+            </div>
+            <div class="form-group my-3">
+                <label asp-for="DepartmentId">Departman</label>
+                <select class="form-control" asp-for="DepartmentId" asp-items="@ViewBag.Departments"></select>
+            </div>
+            <div class="form-group my-3 text-end">
+                <div class="form-group my-3">
+                    <input type="submit" value="Oluştur" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

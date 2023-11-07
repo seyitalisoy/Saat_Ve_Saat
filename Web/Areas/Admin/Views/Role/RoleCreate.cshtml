@@ -1,0 +1,27 @@
+﻿@model RoleCreateVievModel
+
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <h1 class="text-center">Rol Oluştur</h1>
+        <hr />
+        <form asp-action="RoleCreate" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group my-3">
+                <input type="submit" value="Oluştur" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

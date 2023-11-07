@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Anket";
+}
+
+@model SurveyViewModel
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <h1 class="text-center">Anket</h1>
+        <hr />
+        <table class="table table-striped">
+            <tr>
+                <th>@Model.Question</th>
+            </tr>
+        </table>
+        <form asp-controller="Home" asp-action="Survey" method="post">
+
+            <input type="hidden" asp-for="@Model.UserId"/>
+            @if (ViewBag.LastAnswer != null)
+            {
+                <div class="alert alert-success">
+                    Verilen Cevap : @ViewBag.LastAnswer
+                </div>
+            }           
+            
+            @foreach (var item in Model.Answers)
+            {
+                <div class="mb-3 form-check">
+                    <input type="radio" name="selectedAnswer" class="form-check-input" value="@item"/>@item
+                </div>
+            }
+            <div class="form-group my-3">
+                <input type="submit" value="Cevapla" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

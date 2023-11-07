@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@model SurveyTableViewModel
+
+<div class="mt-5 display-6">
+    Anket Sonuçları
+</div>
+
+<div class="d-flex justify-content-end">
+    <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Dashboard" asp-action="CreateSurvey">Anket ekle</a>
+</div>
+
+<table class="table table-striped table">
+    <thead>
+        <tr>
+            <td>@Model.QuestionText</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+            @foreach (var answer in Model.Answers!)
+            {
+                <td>@answer.AnswerText</td>
+            }
+
+        </tr>
+
+        <tr>
+
+            @foreach (var answer in Model.Answers!)
+            {
+                <td>
+                    @foreach(var userAnswer in Model.UserAnswers)
+                    {
+                        if(userAnswer.AnswerId == answer.AnswerId)
+                        {
+                            @foreach(var user in Model.Users)
+                            {
+                                if(user.Id == userAnswer.UserId)
+                                {
+                                    @user.UserName
+                                    <br />
+                                }
+                            }
+                        }
+                    }
+                </td>
+            }
+
+        </tr>
+
+        <tr>
+            
+        </tr>
+    </tbody>
+</table>

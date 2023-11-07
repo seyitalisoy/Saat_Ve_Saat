@@ -1,0 +1,22 @@
+﻿@model List<Employee>
+
+<table class="table table-hover text-white bg-primary">
+    <thead>
+        <tr>
+            <th>İsim</th>
+            <th>Doğum günü</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.BirthDay?.ToString("dd.MM.yyyy")</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

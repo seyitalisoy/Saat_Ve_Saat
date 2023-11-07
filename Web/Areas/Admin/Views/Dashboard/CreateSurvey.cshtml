@@ -1,0 +1,44 @@
+﻿
+@model SurveyCreateViewModel
+
+@section Scripts
+    {
+    @await Html.PartialAsync("_ValidateScriptsPartial")
+}
+
+<div class="my-5 display-6">
+    Anket Oluştur
+</div>
+
+<form method="post" asp-action="CreateSurvey">
+
+    <div asp-validation-summary=ModelOnly class="alert alert-danger" role="alert">
+    </div>
+
+    <div class="form-group">
+        <label for="soru">Anket Sorusu:</label>
+        <input type="text" id="soru" name="QuestionText" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="cevaplar">Cevap Seçenekleri:</label>
+        <div id="cevaplarDiv">
+            <input type="text" name="AnswersText[0]" class="form-control" required>
+        </div>
+    </div>
+    <button type="button" class="btn btn-secondary" onclick="addAnswerOption()">Cevap Ekle</button>
+    <button type="submit" class="btn btn-primary">Anketi Oluştur</button>
+</form>
+<script>
+    let answerCount = 1;
+
+    function addAnswerOption() {
+        const answersDiv = document.getElementById("cevaplarDiv");
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = "AnswersText[" + answerCount + "]";
+        input.className = "form-control";
+        input.required = true;
+        answersDiv.appendChild(input);
+        answerCount++;
+    }
+</script>

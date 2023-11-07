@@ -1,0 +1,31 @@
+﻿
+@model List<RoleViewModel>
+
+<a class="btn btn-outline-success" asp-controller="Role" asp-action="RoleCreate" asp-area="Admin">Role Ekle</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Role adı</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <a class="btn btn-warning btn-sm rounded-3" asp-action="RoleUpdate" asp-area="Admin" asp-controller="Role" asp-route-id="@item.Id">
+                        Rol Güncelle
+                    </a>
+                    <a class="btn btn-danger btn-sm mx-3 rounded-3" asp-action="RoleDelete" asp-area="Admin" asp-controller="Role" asp-route-id="@item.Id">
+                        Rol Sil
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

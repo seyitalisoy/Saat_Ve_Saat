@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Departmanlar";
+}
+@model List<Department>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Departmant No</th>
+            <th>Departman Adı</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DepartmentId</td>
+                <td>@item.DepartmentName</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

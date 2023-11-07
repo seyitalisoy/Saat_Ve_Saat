@@ -1,0 +1,29 @@
+﻿
+﻿@if (User.Identity!.IsAuthenticated)
+{
+    <li class="dropdown">
+        <a class="nav-link dropdown-toggle text-warning" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            @User.Identity.Name
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" asp-area="" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="Index">Profil</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="PasswordChange">Şifre Değiştir</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="UserEdit">Kullanıcı bilgileri</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-route-returnurl="/Home/Index" asp-controller="Member" asp-action="Logout">Çıkış</a></li>
+        </ul>
+    </li>
+    @if(User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-light" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin Panel</a>
+        </li>
+    }
+    
+}
+@* else
+{
+    <li class="nav-item">
+        <a class="btn btn-outline-success mx-1" asp-area="" asp-controller="Home" asp-action="SignIn">Giriş</a>
+    </li>
+} *@
+

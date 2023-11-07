@@ -1,0 +1,22 @@
+﻿@model List<Employee>
+
+<table class="table table-hover text-black bg-warning">
+    <thead>
+        <tr>
+            <th>İsim</th>
+            <th>İşe Giriş Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FullName</td>
+                <td>@item.DateOfHire?.ToString("dd.MM.yyyy")</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
